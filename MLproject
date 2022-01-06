@@ -1,13 +1,16 @@
-name: train_keras_cnn_model
-
-conda_env: conda.yaml
-
+name: reviews-analyser
+docker_env:
+  image: jedha/tensorflow-simple-image
+  environment: [
+    "MLFLOW_TRACKING_URI",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "BACKEND_STORE_URI",
+    "ARTIFACT_ROOT"
+  ]
 entry_points:
   main:
     parameters:
-      batch-size: {type: int, default: 100}
-      epochs: {type: int, default: 4}
-    command: |
-          python train.py \
-            --batch-size {batch-size} \
-            --epochs {epochs} \
+      initial_lr: {type: float, default: 0.01}
+      epochs: {type: int, default: 10}
+    command: "python train_solutions.py --initial_lr {initial_lr} --epochs {epochs}"
