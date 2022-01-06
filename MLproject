@@ -13,4 +13,4 @@ entry_points:
     parameters:
       initial_lr: {type: float, default: 0.01}
       epochs: {type: int, default: 10}
-    command: "python train_solutions.py --initial_lr {initial_lr} --epochs {epochs}"
+    command: "python train_solution.py --initial_lr {initial_lr} --epochs {epochs}"
